@@ -1,0 +1,51 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ListBox x:Name="lbAgents" ItemsSource="{Binding AgentModel}" HorizontalContentAlignment="Stretch" Margin="0,60,0,113">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10" Margin="5" Background="White">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
+                            <TextBlock Text="{Binding Type}" FontStyle="Italic"/>
+                            <TextBlock Text="{Binding Phone}"/>
+                            <TextBlock Text="Приоритет: " Foreground="Gray">
+                                <Run Text="{Binding Priority}"/>
+                            </TextBlock>
+                            <TextBlock Text="ИД: " Foreground="Gray">
+                                <Run Text="{Binding ID}"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button x:Name="btnEdit" Content="Приоритет" HorizontalAlignment="Left" Margin="0,398,0,0" Width="200" Height="20" VerticalAlignment="Top" Click="btnEdit_Click"/>
+        <Button x:Name="btnRemove" Content="Удалить" HorizontalAlignment="Center" Width="200" Height="20" Margin="0,398,0,0" VerticalAlignment="Top"  Click="btnRemove_Click"/>
+        <Button x:Name="btnAdd" Content="Добавить" HorizontalAlignment="Left" Width="200" Height="20" Margin="590,398,0,0" VerticalAlignment="Top"  Click="btnAdd_Click"/>
+        <Button x:Name="btnNavOne" Content="Ввести страницу" HorizontalAlignment="Left" Margin="534,326,0,0" VerticalAlignment="Top" Width="109" Click="changepage_Click"/>
+        <Label x:Name="lbCount" Content="Всего:" HorizontalAlignment="Left" Margin="207,336,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbPrior" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbPrior_SelectionChanged">
+            <ComboBoxItem Content=""/>
+            <ComboBoxItem Content="По убыванию скидки"/>
+            <ComboBoxItem Content="По возрастанию скидки"/>
+        </ComboBox>
+        <ComboBox x:Name="cbType" HorizontalAlignment="Left" Margin="405,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cbType_SelectionChanged"/>
+        <TextBox x:Name="txt_Page" HorizontalAlignment="Left" Margin="572,362,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="34"/>
+
+    </Grid>
+</Window>
